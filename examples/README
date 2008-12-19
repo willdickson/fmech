@@ -1,0 +1,31 @@
+fmech/examples - Examples demonstrating the use of fmech for insect
+flight simulation.
+
+Files:
+
+example_0.py - simplest example (open loop)
+
+example_1.py - simple example w/ pitch rate based forward velocity 
+               controller. Note, roll and yaw only have rate control 
+               so eventually the fly will lose flight attitude. 
+
+ctl_examp.py - module containing implementations of various controllers
+               including the pitch rate based forward velocity controller
+               used in example_1.py
+
+
+Note, the utility view_sim.py found in /fmech/utils can be used to
+render the results of the simulation from the log file as follows 
+
+../utils/view_sim.py log_file
+
+The example utility plot_vals.py found in /fmech/utils plots some of
+the data generated during a simulation from the log_file
+
+../util/plot_vals.py log_file
+
+
+
+
+
+

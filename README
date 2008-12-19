@@ -1,0 +1,25 @@
+fmech 
+=====
+
+fmech is the flight mechanics component of the GUF simulation. It
+includes an articulated rigid-body simulation of the fly, the
+aerodynamic force models, and the haltere force model.
+
+Installation
+
+   * Installation instructions can be found in the INSTALL file.  
+
+Examples
+
+   * Examples demonstrating how to use fmech to create flight
+     simulations are found in the fmech/examples directory. 
+
+Utilities
+
+   * Utilities for rendering simulations and extracting data from log
+     files are found in fmech/utils
+     
+Author
+
+   * Will Dickson (wbd@caltech.edu)
+ 

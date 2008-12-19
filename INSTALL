@@ -1,0 +1,30 @@
+fmech Installation instructions 
+=========================================
+
+Requirements: 
+-------------
+
+- Python v2.2 (or higher) 
+  http://www.python.org/
+
+- Pyrex 0.9.3 (or higher) 
+  http://www.cosc.canterbury.ac.nz/~greg/python/Pyrex/
+
+- PyODE-1.1
+  http://pyode.sourceforge.net/
+
+Installation:
+-------------
+
+The package uses the Python distutils, so you can build it by calling
+
+  python setup.py build
+
+and install it by calling
+
+  python setup.py install
+
+which installs the package on your system. 
+See the "Installing Python Modules" manual inside your Python documentation 
+or at http://docs.python.org/inst/inst.html if you want to customize the
+build process or the target location.

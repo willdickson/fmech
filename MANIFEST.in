@@ -1,0 +1,7 @@
+include MANIFEST.in 
+include MANIFEST
+include INSTALL
+include src/*.h
+include examples/*
+include utils/*
+include lib/fmech/data/*

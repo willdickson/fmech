@@ -1,0 +1,62 @@
+# config.txt
+# 
+# Example configuration file for GUF insect flight 
+# simulation. Entries set to `default' or which are 
+# missing will be set to the package default values. 
+#  
+# Units: legnth (mm), time (ms), mass (mg)
+#
+# Author: William Dickson 03/17/2006
+# ---------------------------------------------------
+
+# Data logging parameters ---------------------------      
+log_file = 'log_file'
+log_dt = 0.25 #ms
+    
+# World simulation parameters -----------------------   
+time_step = 0.05 
+stop_time = 600.0 
+grav_const = default 
+
+# Body parameters -----------------------------------               
+body_density = default
+body_stl_file = default
+
+# Wing Parameters -----------------------------------              
+wing_density = default
+wing_stl_file = default
+wing_chord_file = default
+
+# Joint Parameters ----------------------------------
+# Note, specified for left wing. (Right wing) assumses 
+# bilateral symmetry
+joint2body_cg = default
+joint2wing_cg = default
+
+# Kinematics Parameters -----------------------------
+wing_kine_file = default 
+body_angle =  default
+stroke_angle = default
+wing_ctl_gain = default
+start_tc = default  
+period_limits = default
+ypr_sig_limits = default
+
+# Haltere Parameters -------------------------------- 
+haltere_length = default
+haltere_mass = default 
+haltere_angle = default
+
+# Force model parameters ---------------------------- 
+force_flag = True
+wing_qs_lift_param = default
+wing_qs_drag_param = default
+wing_rotation_coeff = default
+wing_num_elem = default
+air_density = default
+body_force_params = default
+body_moment_params = default
+body_ref_area =  default
+body_ref_length = default
+
+
