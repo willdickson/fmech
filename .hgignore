@@ -3,3 +3,5 @@ syntax: glob
 *~
 *.o
 *.egg-info
+build/*
+src/mirtich.c

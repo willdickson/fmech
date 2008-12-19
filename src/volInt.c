@@ -55,9 +55,8 @@
 */
 
 void readPolyhedron(POLYHEDRON *p, int numVerts, int numFaces)
-{ 
-  char line[200], *c;
-  int i, j, n;
+{
+  int i, j;
   double dx1, dy1, dz1, dx2, dy2, dz2, nx, ny, nz, len;
   FACE *f;
   

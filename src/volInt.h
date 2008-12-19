@@ -122,8 +122,8 @@ void compFaceIntegrals(FACE *f);
 void compVolumeIntegrals(POLYHEDRON *p);
 
 /* Utility functions - to provde a it of error checking in the pyrex code */
-int get_max_verts();
-int get_max_faces();
-int get_max_polygon_sz();
+int get_max_verts(void);
+int get_max_faces(void);
+int get_max_polygon_sz(void);
 
 
