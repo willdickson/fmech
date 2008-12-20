@@ -4,5 +4,6 @@ syntax: glob
 *.o
 *.egg-info
 *.so
+examples/log_file
 build/*
 src/mirtich.c

@@ -4,14 +4,20 @@ fmech Installation instructions
 Requirements: 
 -------------
 
-- Python v2.2 (or higher) 
+- python v2.5 
   http://www.python.org/
 
-- Pyrex 0.9.3 (or higher) 
+- pyrex 0.9.6.4 
   http://www.cosc.canterbury.ac.nz/~greg/python/Pyrex/
 
-- PyODE-1.1
+- pyode-1.2.0-2
   http://pyode.sourceforge.net/
+
+- cgkit-2.0.0alpha8 
+  http://cgkit.sourceforge.net/
+  Note, can be installed w/  INSTALL_CGKIT_LIGHT = True in the
+  config.cfg file.   
+
 
 Installation:
 -------------

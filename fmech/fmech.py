@@ -896,15 +896,15 @@ class wing_aero:
         rot_force_vec = vec_scalar_mul(rot_force_mag, rot_force_unit)
         return rot_force_vec
         
-    def get_am_force(self):
-        """
-        Computes the added mass component of the forces on the
-        wing. I'm leaving this out for now as this component is
-        usually more trouble than it is worth. I'll try to re-work the
-        code and make this component more robust and then re-insert
-        the code.
-        """
-        pass
+#     def get_am_force(self):
+#         """
+#         Computes the added mass component of the forces on the
+#         wing. I'm leaving this out for now as this component is
+#         usually more trouble than it is worth. I'll try to re-work the
+#         code and make this component more robust and then re-insert
+#         the code.
+#         """
+#         pass
     
     def get_force(self, dt):
         """
