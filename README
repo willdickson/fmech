@@ -1,9 +1,9 @@
 fmech 
 =====
 
-fmech is the flight mechanics component of the GUF simulation. It
-includes an articulated rigid-body simulation of the fly, the
-aerodynamic force models, and the haltere force model.
+Insect flight mechanics simulator. fmech is the flight mechanics
+component of the GUF simulation. It includes an articulated rigid-body
+simulation of the fly and the aerodynamic force models.
 
 Installation
 
