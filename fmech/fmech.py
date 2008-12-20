@@ -1,18 +1,45 @@
-#!/usr/bin/python
-#
-# sim_fly.py - base classes for ODE based articulated rigid-body insect
-# flight simulation.
-#
-# classes:
-#
-#   sim_fly       - articulated rigid-body insect model
-#   angle_driver  - wing kinematics driver    
-#   wing_aero     - wing aerodynamics model
-#   body_aero     - body aerodynamics model   
-#   sim_log       - data logger 
-#
-# Author: William Dickson 12/2004
-# ------------------------------------------------------------------------
+"""
+-----------------------------------------------------------------------
+fmech
+Copyright (C) William Dickson, 2008.
+  
+wbd@caltech.edu
+www.willdickson.com
+
+Released under the LGPL Licence, Version 3
+
+This file is part of fmech.
+
+fmech is free software: you can redistribute it and/or modify it
+under the terms of the GNU Lesser General Public License as published
+by the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+    
+fmech is distributed in the hope that it will be useful, but
+WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+Lesser General Public License for more details.
+
+You should have received a copy of the GNU Lesser General Public
+License along with fmech.  If not, see <http://www.gnu.org/licenses/>.
+
+------------------------------------------------------------------------   
+fmech.py 
+
+Purpose: base classes for ODE based articulated rigid-body insect
+flight simulation.
+
+classes:
+  sim_fly       - articulated rigid-body insect model
+  angle_driver  - wing kinematics driver    
+  wing_aero     - wing aerodynamics model
+  body_aero     - body aerodynamics model   
+  sim_log       - data logger 
+
+Author: William Dickson 
+
+------------------------------------------------------------------------
+"""
 import ode, math, cPickle
 from mirtich import get_mass_props
 from sim_util import *
@@ -20,11 +47,13 @@ from sim_util import *
 __all__ = ['sim_fly', 'sim_log']
 
 class sim_fly(object):
-    """ Simulated fly class encapsulating the ODE articulated rigid-body ODE model
+    """ 
+    Simulated fly class encapsulating the ODE articulated rigid-body
+    ODE model
 
-    The class represents a fly, or other effectively two winged insect, as an
-    articulated rigid body. Included are wing kinematics drivers, an aerodynamics
-    model, and simple controllers.
+    The class represents a fly, or other effectively two winged
+    insect, as an articulated rigid body. Included are wing kinematics
+    drivers, an aerodynamics model, and simple controllers.
     
     """
     def update(self, t, dt):

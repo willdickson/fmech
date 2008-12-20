@@ -1,10 +1,36 @@
-#!/usr/bin/env python
-#
-# stl_tools.py - A set of tools for manipulating stl files
-#
-# Author: William Dickson
-#
-# -----------------------------------------------------------------
+"""
+-----------------------------------------------------------------------
+fmech
+Copyright (C) William Dickson, 2008.
+  
+wbd@caltech.edu
+www.willdickson.com
+
+Released under the LGPL Licence, Version 3
+
+This file is part of fmech.
+
+fmech is free software: you can redistribute it and/or modify it
+under the terms of the GNU Lesser General Public License as published
+by the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+    
+fmech is distributed in the hope that it will be useful, but
+WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+Lesser General Public License for more details.
+
+You should have received a copy of the GNU Lesser General Public
+License along with fmech.  If not, see <http://www.gnu.org/licenses/>.
+
+------------------------------------------------------------------------   
+stl_tools.py 
+
+Purpose: a set of tools for manipulating stl files.
+
+Author: William Dickson 
+------------------------------------------------------------------------
+"""
 import sys, string, math, copy
 try:
     import cgkit.cgtypes as cgtypes # cgkit 2
@@ -334,32 +360,3 @@ if __name__=='__main__':
     print 'max(z): ', max(z_list), ', min(z): ', min(z_list)
     write_stl('body_scaled.stl', facet_list)
 
-
-##     filename = 'polywing.stl'
-##     facet_list = read_stl(filename)
-##     vertex_dict = get_vertex_dict(facet_list)
-##     x_list = [x for x,y,z in vertex_dict.keys()]
-##     y_list = [y for x,y,z in vertex_dict.keys()]
-##     z_list = [z for x,y,z in vertex_dict.keys()]
-
-##     print 'max(x): ', max(x_list), ', min(x): ', min(x_list)
-##     print 'max(y): ', max(y_list), ', min(y): ', min(y_list)
-##     print 'max(z): ', max(z_list), ', min(z): ', min(z_list)
-
-
-##     shift = -min(x_list), -min(y_list), -min(z_list)
-
-##     print shift
-
-##     facet_list = shift_facet_list(facet_list, shift)
-
-##     vertex_dict = get_vertex_dict(facet_list)
-##     x_list = [x for x,y,z in vertex_dict.keys()]
-##     y_list = [y for x,y,z in vertex_dict.keys()]
-##     z_list = [z for x,y,z in vertex_dict.keys()]
-
-##     print 'max(x): ', max(x_list), ', min(x): ', min(x_list)
-##     print 'max(y): ', max(y_list), ', min(y): ', min(y_list)
-##     print 'max(z): ', max(z_list), ', min(z): ', min(z_list)
-
-##     #write_stl('polywing_scal.stl', facet_list)
