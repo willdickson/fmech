@@ -492,7 +492,10 @@ class sim_fly(object):
               
         # Set angular motor axes - AMotorEuler mode
         self.stroke_angle =  deg2rad(config['stroke_angle'])
-        ang = (0.5*math.pi - self.stroke_angle)
+        # ---------------------------------------------------
+        #ang = (0.5*math.pi - self.stroke_angle) # old method
+        # ---------------------------------------------------
+        ang = self.stroke_angle - 0.5*math.pi + self.body_angle
         r_axis_0 = rotate_vec((0, 0, 1),(0, 1, 0),ang)
         r_axis_2 = rotate_vec((0,1, 0),(0, 1, 0),ang)
         l_axis_0 = rotate_vec((0, 0,-1),(0, 1, 0),ang)
