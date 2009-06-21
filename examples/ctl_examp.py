@@ -173,8 +173,8 @@ class fvel_ctl:
 
     def __init__(self, fvel, ang_vel, alt,
                  prop_gain = 0.1,
-                 deriv_gain = 15.0,
-                 integ_gain = 0.0002,
+                 deriv_gain = 10.0,
+                 integ_gain = 0.0000,
                  filt_tc = 1.0,
                  deriv_clamp = 0.1,
                  integ_clamp = 2e3
