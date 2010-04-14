@@ -169,13 +169,15 @@ cam.SetPosition(cam_pos)
 cam.SetFocalPoint(cam_fpt)
 cam.SetViewUp((0,0,1))
 
-## Add text actor
+# Add text actor
+text_mapper = vtk.vtkTextMapper()
+text_mapper.GetTextProperty().SetFontSize(16)
+text_mapper.SetInput('')
 text = vtk.vtkTextActor()
-text.GetTextProperty().SetFontSize(16)
-text.SetInput('')
+text.SetMapper(text_mapper)
 text.SetDisplayPosition(5,5)
 text.GetProperty().SetColor(0.8,0.8,0.8)
-ren.AddActor2D(text)
+ren.AddActor(text)
        
 # Loop through log and render
 n = len(log.body_p)
@@ -204,7 +206,7 @@ for i in n_list:
     r_wing_actor.SetUserTransform(trans)
 
     # Add time text
-    text.SetInput('t %4.1f ms'%(log.t[i],))
+    text_mapper.SetInput('t %4.1f ms'%(log.t[i],))
     
     # Reset clipping range and render
     ren.ResetCameraClippingRange() 

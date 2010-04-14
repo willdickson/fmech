@@ -441,6 +441,7 @@ class sim_fly(object):
         mass = ode.Mass()
         p = (body_mass,) + body_cg + body_it
         mass.setParameters(p[0],p[1],p[2],p[3],p[4],p[5],p[6],p[7],p[8],p[9])
+        mass.translate((-p[1],-p[2],-p[3]))
         self.body.setMass(mass)
         
         # Rotate body for correct body angle
@@ -454,6 +455,7 @@ class sim_fly(object):
         wing_mass, wing_cg, wing_it = get_mass_props(wing_stl_file, wing_density)
         p = (wing_mass,) + wing_cg + wing_it
         mass.setParameters(p[0],p[1],p[2],p[3],p[4],p[5],p[6],p[7],p[8],p[9])       
+        mass.translate((-p[1],-p[2],-p[3]))
         self.r_wing.setMass(mass)
         self.l_wing.setMass(mass)
         

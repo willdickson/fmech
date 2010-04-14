@@ -5,6 +5,7 @@ syntax: glob
 *.egg
 *.egg-info
 *.so
+*.swp
 examples/log_file
 build/*
 src/mirtich.c
