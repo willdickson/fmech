@@ -14,8 +14,9 @@ log_file = 'log_file'
 log_dt = 0.25 #ms
     
 # World simulation parameters -----------------------   
-time_step = 0.05 
-stop_time = 600.0 
+#time_step = 0.05 
+time_step = 0.025 
+stop_time = 1000.0 
 grav_const = default 
 
 # Body parameters -----------------------------------               
@@ -52,7 +53,8 @@ force_flag = True
 wing_qs_lift_param = default
 wing_qs_drag_param = default
 wing_rotation_coeff = default
-wing_num_elem = default
+#wing_num_elem = default
+wing_num_elem = 20 
 air_density = default
 body_force_params = default
 body_moment_params = default

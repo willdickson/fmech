@@ -76,6 +76,9 @@ t_sig = [w for x,y,z,w in log.ctl_sig]
 # Unpack period
 period = [x for x in log.period]
 
+# Unpack fvel
+fvel = [x for x in log.fly_fvel]
+
 # Unpack haltere forces
 haltere_l = [x for x,y in log.haltere_forces]
 haltere_r = [y for x,y in log.haltere_forces]
@@ -117,6 +120,11 @@ pylab.ylabel('throttle')
 pylab.xlabel('t (ms)')
 
 pylab.figure(4)
+pylab.plot(t,fvel,'b')
+pylab.ylabel('fvel (m/s)')
+pylab.xlabel('t (ms)')
+
+pylab.figure(5)
 pylab.plot(t,haltere_l, 'b')
 pylab.plot(t,haltere_r, 'r')
 pylab.title('Haltere Forces')

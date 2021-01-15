@@ -697,7 +697,7 @@ class wing_controller:
     the desired kinematics
     """
 
-    def __init__(self, gain = 0.1, max_vel = (100.0, 100.0, 300.0)):
+    def __init__(self, gain = 0.1, max_vel = (500.0, 100.0, 300.0)):
         """
         Initialize wing controller.
 

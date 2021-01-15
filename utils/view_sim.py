@@ -34,9 +34,10 @@ Author: William Dickson
 """
 import sys
 import vtk, string, cPickle, os
+from time import sleep
 from fmech.sim_util import quat2mat
 from fmech.sim_util import read_config
-from time import sleep
+from write_image import write_image
 
 # Rendering step
 step = 1
@@ -88,19 +89,23 @@ body_filt = vtk.vtkPolyDataNormals()
 body_filt.ConsistencyOn()
 body_filt.SplittingOn()
 body_filt.ComputePointNormalsOn()
-body_filt.SetInput(body_src.GetOutput())
+#body_filt.SetInput(body_src.GetOutput())
+body_filt.SetInputConnection(body_src.GetOutputPort())
 
 wing_filt = vtk.vtkPolyDataNormals()
 wing_filt.ConsistencyOn()
 wing_filt.SplittingOn()
 wing_filt.ComputePointNormalsOn()
-wing_filt.SetInput(wing_src.GetOutput())
+#wing_filt.SetInput(wing_src.GetOutput())
+wing_filt.SetInputConnection(wing_src.GetOutputPort())
 
 # Set up mappers
 body_mapper = vtk.vtkPolyDataMapper()
-body_mapper.SetInput(body_filt.GetOutput())
+#body_mapper.SetInput(body_filt.GetOutput())
+body_mapper.SetInputConnection(body_filt.GetOutputPort())
 wing_mapper = vtk.vtkPolyDataMapper()
-wing_mapper.SetInput(wing_filt.GetOutput())
+#wing_mapper.SetInput(wing_filt.GetOutput())
+wing_mapper.SetInputConnection(wing_filt.GetOutputPort())
 
 # Setup body actors
 body_actor = vtk.vtkActor()
@@ -147,7 +152,8 @@ if 1:
     ball.SetThetaResolution(25)
     ball.SetPhiResolution(25)
     mapBall = vtk.vtkPolyDataMapper()
-    mapBall.SetInput( ball.GetOutput())
+    #mapBall.SetInputData( ball.GetOutput())
+    mapBall.SetInputConnection( ball.GetOutputPort())
     for i in range(0,ball_grid[0]):
         for j in range(0,ball_grid[1]):
             ball_x = i*ball_spacing - 50
@@ -209,3 +215,6 @@ for i in n_list:
     # Reset clipping range and render
     ren.ResetCameraClippingRange() 
     ren_win.Render()
+
+    image_name = './images/frame_{:06d}'.format(i)
+    write_image(image_name, ren_win)

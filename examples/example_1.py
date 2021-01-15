@@ -25,7 +25,7 @@ world.setGravity((0.0, 0.0, -grav_const))
 fly = sim_fly(world, config)
 
 # Set CM poition to origin
-fly.setPosition((0,0,0))
+fly.setPosition((-100,0,0))
 
 # Initialize log
 log = sim_log(t, config)
@@ -38,7 +38,7 @@ x, y, z = fly.getPosition()
 fvel = fly.getForwardVel()
 
 # Initialize controller
-fvel_ctl = ctl_examp.fvel_ctl(fvel, ang_vel, z)
+fvel_ctl = ctl_examp.fvel_ctl(fvel, ang_vel, z, prop_gain=0.1, deriv_gain = 15.0, integ_gain=0.0001)
                               
 # Control signal low pass filter
 ctl_sig_filter = ctl_examp.ctl_sig_filter((0.0,0.0,0.0,0.0))
@@ -46,8 +46,12 @@ ctl_sig_filter = ctl_examp.ctl_sig_filter((0.0,0.0,0.0,0.0))
 while t < t_stop:
 
     # Change controller set point
-    if t > 300.0:
-        fvel_ctl.set_pt = 0.15
+    if t > 400.0:
+        fvel_ctl.set_pt = 0.4
+
+    #if t > 400.0 and t < 402.0:
+    #    #fly.body.addRelTorque((0.0,0.01, 0.0))
+    #    fly.body.addRelTorque((0.003,0.0, 0.0))
         
     # Get required state variables for controller
     ang_vel = fly.getAngularVel()

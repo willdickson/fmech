@@ -41,7 +41,7 @@ class ypr_ctl:
     controller.
     """
 
-    def __init__(self, ang_vel, p_gain = 3.0, r_gain = 1.0, y_gain = 1.0, av_filt_tc = 0.0):
+    def __init__( self, ang_vel, p_gain = 3.0, r_gain = 1.0, y_gain = 1.0, av_filt_tc = 0.0):
         """
         Initialize controller.
 
@@ -54,10 +54,14 @@ class ypr_ctl:
             y_gain = yaw rate controller gain
             av_filt_tc = angular velocity filter time constant.            
         """
+        self.y_offset =  0.0 
+        self.p_offset = -0.30
+        self.r_offset =  0.0
+
         self.set_pt = ang_vel  
+        self.y_gain = y_gain
         self.p_gain = p_gain
         self.r_gain = r_gain
-        self.y_gain = y_gain
         self.filter = Filt1(ang_vel, av_filt_tc)
 
     def get_sig(self, ang_vel, dt):
@@ -74,9 +78,9 @@ class ypr_ctl:
         """
         ang_vel_filt = self.filter.update(ang_vel, dt)
         # Get control values
-        y_sig = self.y_gain*(self.set_pt[0] - ang_vel_filt[0]) # Yaw
-        p_sig = self.p_gain*(self.set_pt[1] - ang_vel_filt[1]) # Pitch
-        r_sig = self.r_gain*(self.set_pt[2] - ang_vel_filt[2]) # Roll
+        y_sig = self.y_gain*(self.set_pt[0] - ang_vel_filt[0]) + self.y_offset # Yaw
+        p_sig = self.p_gain*(self.set_pt[1] - ang_vel_filt[1]) + self.p_offset # Pitch
+        r_sig = self.r_gain*(self.set_pt[2] - ang_vel_filt[2]) + self.r_offset # Roll
         return y_sig, p_sig, r_sig    
 
 class alt_ctl:
@@ -199,6 +203,7 @@ class fvel_ctl:
         self.err = 0.0
         self.integ_err = 0.0
         self.set_pt = fvel 
+        self.fvel_last = 0.0
         self.err_filter = Filt1(fvel,filt_tc) 
         self.prop_gain = prop_gain
         self.deriv_gain = deriv_gain
@@ -225,14 +230,21 @@ class fvel_ctl:
             control signals
         """
         # Compute error and low pass filter
-        err = self.set_pt - fvel
-        ferr_last = self.err_filter.val
-        ferr = self.err_filter.update(err,dt)
-        self.err = ferr
+        #err = self.set_pt - fvel
+        #ferr_last = self.err_filter.val
+        #ferr = self.err_filter.update(err,dt)
+        #self.err = ferr
 
-        # Get derivative error
-        dferr_dt = (ferr - ferr_last)/dt
-        self.derr_dt = dferr_dt
+        err = self.set_pt - fvel
+        ferr = err
+        self.err = err
+
+        # Get derivative error (just damping)
+        dferr_dt = -(fvel - self.fvel_last)/dt
+        self.dferr_dt = dferr_dt
+        self.fvel_last = fvel
+        #dferr_dt = (ferr - ferr_last)/dt
+        #self.derr_dt = dferr_dt
         
         # Clamp derivative of error term
         if self.deriv_clamp:

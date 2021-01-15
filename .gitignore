@@ -1,0 +1,14 @@
+*~
+*.egg-info
+*.pyc
+*.hdf5
+*.cal
+*.mp4
+*.so
+log_file_*
+examples/images*
+src/mirtich.c
+node_modules
+build
+_build
+
